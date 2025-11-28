@@ -8,7 +8,22 @@ Class {
 SameGame class >> open [
 
 	<script>
-	self openWidth: 20 height: 20
+	SGSizeSelector open
+]
+
+{ #category : #configuration }
+SameGame class >> smallGridSize [
+	^ 10 @ 10
+]
+
+{ #category : #configuration }
+SameGame class >> mediumGridSize [
+	^ 20 @ 20
+]
+
+{ #category : #configuration }
+SameGame class >> largeGridSize [
+	^ 30 @ 30
 ]
 
 { #category : #'instance creation' }
