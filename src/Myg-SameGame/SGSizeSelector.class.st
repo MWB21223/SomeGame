@@ -1,28 +1,23 @@
 Class {
-	#name : #SGSizeSelector,
-	#superclass : #BlElement,
-	#category : #'Myg-SameGame-UI'
+	#name : 'SGSizeSelector',
+	#superclass : 'BlElement',
+	#category : 'Myg-SameGame-UI',
+	#package : 'Myg-SameGame',
+	#tag : 'UI'
 }
 
-{ #category : #initialization }
-SGSizeSelector >> initialize [
-
-	super initialize.
-	self layout: (BlLinearLayout vertical cellSpacing: 10).
-	self constraintsDo: [ :c |
-		c horizontal matchParent.
-		c vertical matchParent ].
-	self padding: (BlInsets all: 20).
-	self background: Color white.
-	
-	self addChild: (BlTextElement new 
-		text: ('Select Grid Size' asRopedText fontSize: 24; bold);
-		margin: (BlInsets bottom: 20)).
-		
-	self addButtons.
+{ #category : 'opening' }
+SGSizeSelector class >> open [
+	<script>
+	| space |
+	space := BlSpace new.
+	space title: 'SameGame - New Game'.
+	space extent: 300@400.
+	space root addChild: self new.
+	space show
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SGSizeSelector >> addButtons [
 
 	self addChild: (self createButtonLabel: 'Small (10x10)' action: [ SameGame openWidth: 10 height: 10 ]).
@@ -30,7 +25,7 @@ SGSizeSelector >> addButtons [
 	self addChild: (self createButtonLabel: 'Large (30x30)' action: [ SameGame openWidth: 30 height: 30 ]).
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 SGSizeSelector >> createButtonLabel: aString action: aBlock [
 
 	| button |
@@ -54,13 +49,20 @@ SGSizeSelector >> createButtonLabel: aString action: aBlock [
 	^ button
 ]
 
-{ #category : #opening }
-SGSizeSelector class >> open [
-	<script>
-	| space |
-	space := BlSpace new.
-	space title: 'SameGame - New Game'.
-	space extent: 300@400.
-	space root addChild: self new.
-	space show
+{ #category : 'initialization' }
+SGSizeSelector >> initialize [
+
+	super initialize.
+	self layout: (BlLinearLayout vertical cellSpacing: 10).
+	self constraintsDo: [ :c |
+		c horizontal matchParent.
+		c vertical matchParent ].
+	self padding: (BlInsets all: 20).
+	self background: Color white.
+	
+	self addChild: (BlTextElement new 
+		text: ('Select Grid Size' asRopedText fontSize: 24; bold);
+		margin: (BlInsets bottom: 20)).
+		
+	self addButtons.
 ]
