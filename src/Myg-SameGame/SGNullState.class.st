@@ -28,6 +28,11 @@ SGNullState >> backgroundRepresentation [
 	^ Color gray
 ]
 
+{ #category : 'as yet unclassified' }
+SGNullState >> backgroundRepresentationUsing: aSkin [
+	^ aSkin backgroundForNullState
+]
+
 { #category : 'accessing' }
 SGNullState >> isNull [
 

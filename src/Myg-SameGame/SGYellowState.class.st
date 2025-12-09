@@ -8,8 +8,12 @@ Class {
 
 { #category : 'accessing' }
 SGYellowState >> backgroundRepresentation [
+	^ self backgroundRepresentationUsing: SGAppearance currentSkin 
+]
 
-	^ Color lightYellow
+{ #category : 'as yet unclassified' }
+SGYellowState >> backgroundRepresentationUsing: aSkin [
+	^ aSkin backgroundForYellowState
 ]
 
 { #category : 'accessing' }
