@@ -79,19 +79,21 @@ SGBoxElement >> initialize [
 
 { #category : 'initialization' }
 SGBoxElement >> initializeAnnouncements [ 
-
-	self box announcer when: SGStateChangedAnnouncement send: #updateBackgroundColor to: self
+	"Subscribe to box state changes AND global skin changes"
+	
+	self box announcer 
+		when: SGStateChangedAnnouncement 
+		send: #updateBackgroundColor 
+		to: self.
+	
+	SGAppearance announcer 
+		when: SGSkinChangedAnnouncement 
+		send: #updateBackgroundColor 
+		to: self
 ]
 
 { #category : 'change reporting' }
 SGBoxElement >> updateBackgroundColor [
-	| newColor |
-^ self background: self box backgroundRepresentation
-
-	newColor = self box backgroundRepresentation .
-	Transcript show: 'Box ', self gridPosition asString, ' color: ', newColor asString; cr.
-	self background: Color transparent.
-	self background: newColor.
-	self invalidate.
-	self requestLayout 
+	
+	self background: self box backgroundRepresentation
 ]

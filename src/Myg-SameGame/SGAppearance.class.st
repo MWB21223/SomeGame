@@ -34,5 +34,5 @@ SGAppearance class >> currentSkin: aSkin [
 { #category : 'as yet unclassified' }
 SGAppearance class >> whenSkinChanges: anAnnouncementBlock [ 
 
-	self announcer when: SGSkinChangedAnnouncement do: anAnnouncementBlock
+	self announcer on: SGSkinChangedAnnouncement do: anAnnouncementBlock
 ]
