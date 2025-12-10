@@ -14,6 +14,10 @@ Class {
 SGBoardElementTest >> setUp [
 
 	super setUp.
+	
+	"Initialize Classic skin for consistent color tests"
+	SGAppearance currentSkin: SGClassicSkin new.
+	
 	"Y: Yellow , B: Blue , G: Green , R: Red, N : Null
 	represents this grid:
 	 | B | Y | G | 
@@ -117,13 +121,13 @@ SGBoardElementTest >> testExchangeCase [
 	
 	self
 		assert: (graphicBoard grid at: 2 @ 1) background paint color
-		equals: Color lightYellow.
+		equals: (Color r: 1.0 g: 1.0 b: 0.6).
 		
 	board switchBox: 1 @ 1 with: 2 @ 1.
 	
 self
 		assert: (graphicBoard grid at: 1 @ 1) background paint color
-		equals: Color lightYellow.
+		equals: (Color r: 1.0 g: 1.0 b: 0.6).
 		
 	self
 		assert: (graphicBoard grid at: 2 @ 1) background paint color
@@ -144,13 +148,13 @@ SGBoardElementTest >> testGridSetUp [
 		equals: Color lightRed.
 	self
 		assert: (graphicBoard grid at: 2 @ 1) background paint color
-		equals: Color lightYellow.
+		equals: (Color r: 1.0 g: 1.0 b: 0.6).
 	self
 		assert: (graphicBoard grid at: 2 @ 2) background paint color
-		equals: Color lightYellow.
+		equals: (Color r: 1.0 g: 1.0 b: 0.6).
 	self
 		assert: (graphicBoard grid at: 2 @ 3) background paint color
-		equals: Color lightYellow.
+		equals: (Color r: 1.0 g: 1.0 b: 0.6).
 		self
 		assert: (graphicBoard grid at: 3 @ 1) background paint color
 		equals: Color lightGreen.
